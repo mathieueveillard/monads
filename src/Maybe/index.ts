@@ -22,3 +22,15 @@ export const error = <U>(e: string): Error<U> => ({
   error: e,
   pipe: <V>(_fn: MappingFunction<U, V>) => error<V>(e),
 });
+
+/*
+ * Testing facilities
+ */
+
+export const getResult = <U>(maybe: Maybe<U>): U => {
+  return (maybe as Success<U>).result;
+};
+
+export const getError = <U>(maybe: Maybe<U>): string => {
+  return (maybe as Error<U>).error;
+};
