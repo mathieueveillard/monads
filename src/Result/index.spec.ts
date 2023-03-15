@@ -1,12 +1,13 @@
-import { MappingFunction, Success, Error, success, error, getResult, getError } from ".";
+import { MappingFunction, success, error, getResult, getError } from ".";
 
-describe("Maybe", function () {
+type Fraction = {
+  numerator: number;
+  denominator: number;
+};
+
+describe("Result", function () {
   test("Input OK, Output OK", function () {
     // GIVEN
-    interface Fraction {
-      numerator: number;
-      denominator: number;
-    }
     const evaluate: MappingFunction<Fraction, number> = ({ numerator, denominator }) => {
       if (denominator === 0) {
         return error("Division by 0");
@@ -24,10 +25,6 @@ describe("Maybe", function () {
 
   test("Input OK, Output KO", function () {
     // GIVEN
-    interface Fraction {
-      numerator: number;
-      denominator: number;
-    }
     const evaluate: MappingFunction<Fraction, number> = ({ numerator, denominator }) => {
       if (denominator === 0) {
         return error("Division by 0");
@@ -45,10 +42,6 @@ describe("Maybe", function () {
 
   test("Input KO => Output OK", function () {
     // GIVEN
-    interface Fraction {
-      numerator: number;
-      denominator: number;
-    }
     const evaluate: MappingFunction<Fraction, number> = ({ numerator, denominator }) => {
       if (denominator === 0) {
         return error("Division by 0");
